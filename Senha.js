@@ -1,8 +1,9 @@
+//Registro de Usuários
 class Usuario{
     constructor(senha,nomeUsuario){
-    this.senha = senha;
-    this.nomeUsuario = nomeUsuario;
-}
+        this.senha = senha;
+        this.nomeUsuario = nomeUsuario;
+    }
 }
 
 function main(){
