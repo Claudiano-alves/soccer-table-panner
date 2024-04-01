@@ -1,69 +1,59 @@
+
 class Usuario{
-    constructor(senha,nomeUsuario){
-        this.senha = senha;
+    constructor(nomeUsuario, senha){
         this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
     }
 }
 
-function Cadastrar(C){
+const registerUser = [];
+
+const registerForm = document.getElementById('registerForm');
+const loginForm = document.getElementById('loginForm');
+const msgError = document.getElementById('msgError');
+const msgErrorPassW = document.getElementById('msgErrorPassW');
+const list = document.querySelector('.list');
+
+registerForm.addEventListener('submit',function(event){
+    event.preventDefault();
     
-    let cadastradoNovo = 0, i, usuarioNovo = '', senhaNova = '';
+    const usuario = document.getElementById('name').value;
+    const senha = document.getElementById('password').value;
+    const confirmSenha = document.getElementById('confirmPass').value;
     
-
-    for(let i = 0; i < 100; i++){
-
-        if(C[i].nomeUsuario === usuarioNovo){
-            alert("Usuário já cadastrado!");
-            UsuarioCadastrado = 1;
-            break;
+    const userExists = registerUser.find(user => user.nomeUsuario === usuario);
+    
+    if(userExists){
+        msgError.innerHTML = '<p>Usuário já cadastrado!</p>';
+    } else{
+        if(senha !== confirmSenha){
+            msgErrorPassW.textContent = 'Senhas não coincidem!';
+        } else{
+            msgErrorPassW.textContent = '';
+            const novoUsuario = new Usuario(usuario, senha);    
+            registerUser.push(novoUsuario);
+            registerForm.reset();
+            list.innerHTML += `<p>${usuario}</p>\n`;
         }
     }
-    if(UsuarioCadastrado == 0){
-        for(i = 0; i < 100; i++){
-            if(C[i].nomeUsuario === "-"){
-                C[i].nomeUsuario = usuarioNovo;
-                while(1){
-                    while(senhaNova === ''){
-                        senhaNova = alert("Insira a senha:");
-                    }
-                    C[i].senha = prompt("Repita a senha:");
-                    if(senhaNova !== C[i].senha){
-                        alert("Senhas não coincidem!");
-                    } else break;
-                }
-                break;
-            }
+});
+
+loginForm.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    const userName = document.getElementById('userName').value;
+    const password = document.getElementById('userPass').value;
+    
+    const userExists = registerUser.find(user => user.nomeUsuario === userName);
+    
+    if(userExists){
+        if(userExists.senha === password){
+            alert("Login realizado com sucesso");
+            loginForm.reset();
+        } else{
+            msgErrorPass.textContent = 'Senha inválida!';
         }
+    } else{
+        msgErrorPass.textContent = 'Usuário inválido';
     }
-}
-function Remover(C){
-    let UsuarioCadastrado = 0, usuarioChecar;
-
-    usuarioChecar = prompt("Insira o usuário a ser removido:");
-
-    for(let i = 0; i < 100; i++){
-        if(C[i].nomeUsuario === usuarioChecar){
-            C[i].nomeUsuario = "-";
-            C[i].senha = "-";
-            UsuarioCadastrado = 1;
-            alert("Usuário encontrado e removido");
-            break;
-        }
-    }  
-    if(UsuarioCadastrado = 0) alert("Usuário não encontrado!");
-}
-function Acessar(C){
-    let UsuarioCadastrado = 0, usuarioChecar, senhaChecar;
-
-    usuarioChecar = prompt("Insira o usuário:");
-    for(let i = 0; i < 100; i++){
-        if(C[i].nomeUsuario === usuarioChecar){
-            senhaChecar = prompt("Informe a senha:");
-            if(senhaChecar === C[i].senha) alert("Acesso liberado");
-            else alert("Senha incorreta. Acesso negado!");
-            UsuarioCadastrado = 1;
-            break;
-        }
-    }
-    if(UsuarioCadastrado == 0) alert("Usuário não encontrado!");
-}
+});

@@ -15,7 +15,7 @@ $(function(){
             $('.registration_user').fadeOut();
         })
 
-        $('.form').click(function(e){
+        $('#registerForm').click(function(e){
             e.stopPropagation();
         })
     }

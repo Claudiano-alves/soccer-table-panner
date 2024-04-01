@@ -38,7 +38,7 @@ main{
     transition: all 0.6s ease-in-out;
 }
 
-.container form{
+.container #loginForm{
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -186,7 +186,7 @@ input::placeholder{
     bottom: 560px;
 }
 
-.form{
+#registerForm{
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
     background-color: #6950A5;
     padding: 80px 2%;
@@ -201,9 +201,8 @@ input::placeholder{
 }
 
 .registration_user h1{
-    width: 200px;
+    width: 400px;
     letter-spacing: 8px;
-    display: flex;
     margin-top: 30px;
     text-align: center;
     font-size: 30px;
@@ -213,13 +212,12 @@ input::placeholder{
     -webkit-text-stroke: 0.7px #B0B0B0;
     text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
     filter: drop-shadow(0 5px 1070px rgba(0, 0, 0, 0.19));
-    margin-bottom: 5px;
 }
 
 .registration_user button{
     background-color: #8D76C3;
     color: white;
-    margin-top: 40px;
+    margin-top: 60px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -237,4 +235,31 @@ input::placeholder{
 
 .registration_user button:hover{
     background-color: #9b84d1;
+}
+
+#msgErrorPass{
+    font-size: 10px;
+    color: red;
+}
+#msgErrorPassW{
+    font-size: 10px;
+    color: red;
+}
+
+.list{
+    position: absolute;
+    background-color: #6950A5;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    width: 400px;
+    height: 500px;
+    margin-top: -700px;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.list h1{
+    font-size: 20px;
 }

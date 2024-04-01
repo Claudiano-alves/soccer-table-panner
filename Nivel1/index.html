@@ -9,9 +9,10 @@
     <title>Registro de Usuário</title>
 </head>
 <body>
+
     <main>
         <div class="container">
-            <form>
+            <form id="loginForm">
                 <h1>Sign in</h1>
                 <div class="icons">
                         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -19,28 +20,39 @@
                         <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                         <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
+
                 <span>or use your email password</span>
-                <input type="text" name="nome" placeholder="User Name">
-                <input type="password" name="Password" placeholder="Password">
+                <input type="text" name="nome" placeholder="User Name" id="userName" required>
+                <input type="password" name="Password" placeholder="Password" id="userPass" required>
+                <p id="msgErrorPass"></p>
                 <a href="#">Forget Your Password?</a>
-                <button>Sign in</button>
+
+                <button type="submit">Sign in</button>
             </form>
         </div>
     
         <div class="registration_user" style="display: none;">
-            <form class="form">
+            <form id="registerForm">
                 <div class="closeBtn">x</div>
                 <h1>Register User</h1>
                 <span>Create Account</span>
-                <input type="text" name="nome" placeholder="User Name">
-                <input type="password" name="Password" placeholder="Password">
-                <input type="password" name="Password" placeholder="Confim Password">
-                <button>Register</button>
+
+                <input type="text" name="nome" placeholder="User Name" id="name" required>
+                <input type="password" name="Password" placeholder="Password" id="password" required>
+                <div id="msgError"></div>
+                <input type="password" name="Password" placeholder="Confim Password" id="confirmPass" required>
+                <p id="msgErrorPassW"></p>
+
+                <button type="submit">Register</button>
             </form>
         </div>
         
         <div class="registration_user_button">Resgiter User</div>
     </main>
+
+    <div class="list">
+        <h1>Usuário Cadastrados: </h1>
+    </div>
     <script src="transition.js"></script>
     <script src="register.js"></script>
 </body>
